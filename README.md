@@ -2,3 +2,5 @@
 yup. i just recode my "catgame" project to python :3
 # how to install
 just "git clone" this repository to your home directory and install python3-gobject
+# PyPi
+soon...
