@@ -6,26 +6,15 @@ from gi.repository import Gtk, Gdk
 import time
 
 
-def on_file_create(button):
+def store(button):
     cdata = os.path.expanduser("~/.local/share/catdata")
-    try:
-        with open(os.path.join(cdata, "eat.txt"), "w") as f:
-            f.write("food for cat")
-        info_dialog = Gtk.MessageDialog(
-            parent=None,
-            flags=0,
-            message_type=Gtk.MessageType.INFO,
-            buttons=Gtk.ButtonsType.OK,
-            text="you bought food!"
-        )
-    except Exception as e:
-        info_dialog = Gtk.MessageDialog(
-            parent=None,
-            flags=0,
-            message_type=Gtk.MessageType.ERROR,
-            buttons=Gtk.ButtonsType.OK,
-            text=f"where is no food..."
-        )
+    info_dialog = Gtk.MessageDialog(
+        parent=None,
+        flags=0,
+        message_type=Gtk.MessageType.ERROR,
+        buttons=Gtk.ButtonsType.OK,
+        text=f"under construction. sorry :("
+    )
     
     info_dialog.connect("response", lambda dialog, response: dialog.destroy())
     info_dialog.show()
@@ -103,22 +92,19 @@ def eat(event, image):
     current_dir = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(current_dir, f"data/{cicon}")
 
-    if os.path.exists(os.path.join(cdata, "eat.txt")):
-        subprocess.call(['notify-send', '-i', path, name, "you fed the cat :)"])
+    subprocess.call(['notify-send', '-i', path, name, "you fed the cat :)"])
     
-        cattxt[1] = f"happy and not hungry\n"
-        cattxt[3] = "happy.png"
-        print(cattxt)
+    cattxt[1] = f"happy and not hungry\n"
+    cattxt[3] = "happy.png"
+    print(cattxt)
 
-        with open(os.path.join(cdata, "cat.txt"), "w") as f:
-            f.writelines(cattxt)
-        os.remove(os.path.join(cdata, "eat.txt"))
-        teat = int(time.time()) + 10800
-        with open(os.path.join(cdata, "teat.txt"), "w") as f:
-            f.write(f"{teat}")
-        image.set_from_file(os.path.join(current_dir, "data/happy.png"))
-    else:
-        subprocess.call(['notify-send', '-i', path, name, "you have no food..."])
+    with open(os.path.join(cdata, "cat.txt"), "w") as f:
+        f.writelines(cattxt)
+    os.remove(os.path.join(cdata, "eat.txt"))
+    teat = int(time.time()) + 10800
+    with open(os.path.join(cdata, "teat.txt"), "w") as f:
+        f.write(f"{teat}")
+    image.set_from_file(os.path.join(current_dir, "data/happy.png"))
 
 
 def main():
@@ -164,8 +150,8 @@ def main():
 
 
     # Кнопка для создания файла
-    create_file_item = Gtk.Button(label="buy food")
-    create_file_item.connect("clicked", on_file_create)
+    create_file_item = Gtk.Button(label="store")
+    create_file_item.connect("clicked", store)
     create_file_item.set_hexpand(True)
     menu_grid.attach(create_file_item, 0, 0, 1, 1)
 
