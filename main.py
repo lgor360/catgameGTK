@@ -26,7 +26,7 @@ def check():
         if version > v:
             print("beta (whaaaaaaa)")
             pushn(os.path.join(current_dir, f"data/icon.png"), "catgameGTK", "how do you find this beta version of catgameGTK...")
-        else:
+        elif version < v:
             print("old")
             info_dialog = Gtk.MessageDialog(
                 parent=None,
