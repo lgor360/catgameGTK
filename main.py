@@ -7,7 +7,8 @@ import time
 import requests
 import asyncio
 
-version = "1.2"
+version = "1.3"
+versiona = "release 1.3"
 cdata = os.path.expanduser("~/.local/share/catdata")
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -17,31 +18,35 @@ def pushn(p, n, m):
 
 
 def check():
-    response = requests.get('https://api.github.com/repos/lgor360/catgameGTK/releases/latest')
-
-    # Проверяем, успешен ли запрос
-    if response.status_code == 200:
-        release_data = response.json()
-        v = release_data['tag_name']
-        if version > v:
-            print("beta (whaaaaaaa)")
-            pushn(os.path.join(current_dir, f"data/icon.png"), "catgameGTK", "how do you find this beta version of catgameGTK...")
-        elif version < v:
-            print("old")
-            info_dialog = Gtk.MessageDialog(
-                parent=None,
-                flags=0,
-                message_type=Gtk.MessageType.ERROR,
-                buttons=Gtk.ButtonsType.OK,
-                text=f"WAIT! a new version of catgameGTK has been released! please upgrade this game to {v}"
-            )
-    
-            info_dialog.connect("response", lambda dialog, response: dialog.destroy())
-            info_dialog.show()
-
-
+    if os.path.exists(os.path.join(current_dir, "data/settings.txt")):
+        with open(os.path.join(current_dir, "data/settings.txt"), "r", encoding="utf-8") as f:
+            conf = f.readlines()
     else:
-        print(f'error: {response.status_code} - {response.text}')
+        conf = "1"
+    if not int(conf[0].strip()) == 0:
+        response = requests.get('https://api.github.com/repos/lgor360/catgameGTK/releases/latest')
+
+        # Проверяем, успешен ли запрос
+        if response.status_code == 200:
+            release_data = response.json()
+            v = release_data['tag_name']
+            if version > v:
+                print("beta (whaaaaaaa)")
+                pushn(os.path.join(current_dir, f"data/icon.png"), "catgameGTK", "how do you find this beta version of catgameGTK...")
+            elif version < v:
+                print("old")
+                info_dialog = Gtk.MessageDialog(
+                    parent=None,
+                    flags=0,
+                    message_type=Gtk.MessageType.ERROR,
+                    buttons=Gtk.ButtonsType.OK,
+                    text=f"WAIT! a new version of catgameGTK has been released! please upgrade this game to {v}"
+                )
+        
+                info_dialog.connect("response", lambda dialog, response: dialog.destroy())
+                info_dialog.show()
+        else:
+            print(f'error: {response.status_code} - {response.text}')
     return
 
 
@@ -74,6 +79,8 @@ def on_response(dialog, ftype):
         print("desert")
         path = os.path.join(current_dir, f"data/{cicon}")
         pushn(path, name, "tasty")
+    elif ftype == "cancel":
+        print("cancel")
 
 
     dialog.destroy()
@@ -90,6 +97,60 @@ def store(button):
     
     info_dialog.connect("response", lambda dialog, response: dialog.destroy())
     info_dialog.show()
+
+
+def sseti(dialog, se):
+    s = se.get_active()
+    if s == True:
+        svalue = "1"
+    elif s == False:
+        svalue = "0"
+    print(svalue)
+    with open(os.path.join(current_dir, "data/settings.txt"), "w") as f:
+        f.writelines(f"{svalue}")
+
+    dialog.destroy()
+
+
+def setti(event):
+    if os.path.exists(os.path.join(current_dir, "data/settings.txt")):
+        with open(os.path.join(current_dir, "data/settings.txt"), "r", encoding="utf-8") as f:
+            conf = f.readlines()
+    else:
+        with open(os.path.join(current_dir, "data/settings.txt"), "w") as f:
+            f.write("1")
+        with open(os.path.join(current_dir, "data/settings.txt"), "r", encoding="utf-8") as f:
+            conf = f.readlines()
+
+    dialog = Gtk.Dialog("settings", None, 0)
+
+    listi = Gtk.Grid()
+    listi.set_row_homogeneous(True)
+    dialog.vbox.add(listi)
+
+    l = Gtk.Label(label="check for updates")
+    l.set_hexpand(True)
+    button_ok = Gtk.Button(label="save")
+    button_ok.set_hexpand(True)
+    button_cancel = Gtk.Button(label="cancel")
+    button_cancel.set_hexpand(True)
+    updates = Gtk.Switch()
+    updates.set_hexpand(True)
+    updates.set_active(bool(int(conf[0].strip())))
+
+    # Обработка нажатий кнопок
+    button_ok.connect("clicked", lambda w: sseti(dialog, updates))
+    button_cancel.connect("clicked", lambda w: on_response(dialog, "cancel"))
+
+    # Добавляем кнопки в диалог
+    listi.attach(l, 0, 0, 3, 1)
+    listi.attach(updates, 4, 0, 1, 1)
+    dialog.action_area.add(button_cancel)
+    dialog.action_area.add(button_ok)
+
+    dialog.set_default_size(190, 70)
+    dialog.set_resizable(False)
+    dialog.show_all()
 
 
 def what(event):
@@ -129,7 +190,7 @@ def infgame(button):
 
     ab = Gtk.AboutDialog()
     ab.set_program_name("catgameGTK")
-    ab.set_version("release 1.2")
+    ab.set_version(versiona)
     ab.set_comments("the game was made in 2024\ni say hello from Russia!\n \ngame is recoded from bash to python")
     ab.set_authors(["Igor360"])
     ab.set_website("https://github.com/lgor360/catgameGTK")
@@ -234,7 +295,7 @@ def main():
 
     # Кнопка для выхода
     se_item = Gtk.Button(label="\u2699")
-    se_item.connect("clicked", store)
+    se_item.connect("clicked", setti)
     menu_grid.pack_end(se_item)
 
 
