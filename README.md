@@ -8,6 +8,6 @@ just "git clone" this repository (or download source code from release) to your 
 
 # roadmap
 
-1.4 working store!\n
-1.5 custom hats!
+1.4 working store!\
+1.5 custom hats!\
 1.6 new options in settings! (like "change cat name")
