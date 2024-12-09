@@ -7,8 +7,8 @@ import time
 import requests
 import asyncio
 
-version = "1.3"
-versiona = "release 1.3"
+version = "1.3.5"
+versiona = "bug-fix 1.3.5"
 cdata = os.path.expanduser("~/.local/share/catdata")
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -26,7 +26,6 @@ def check():
     if not int(conf[0].strip()) == 0:
         response = requests.get('https://api.github.com/repos/lgor360/catgameGTK/releases/latest')
 
-        # Проверяем, успешен ли запрос
         if response.status_code == 200:
             release_data = response.json()
             v = release_data['tag_name']
@@ -138,11 +137,9 @@ def setti(event):
     updates.set_hexpand(True)
     updates.set_active(bool(int(conf[0].strip())))
 
-    # Обработка нажатий кнопок
     button_ok.connect("clicked", lambda w: sseti(dialog, updates))
     button_cancel.connect("clicked", lambda w: on_response(dialog, "cancel"))
 
-    # Добавляем кнопки в диалог
     listi.attach(l, 0, 0, 3, 1)
     listi.attach(updates, 4, 0, 1, 1)
     dialog.action_area.add(button_cancel)
@@ -170,12 +167,9 @@ def what(event):
     kokii = Gtk.Image.new_from_pixbuf(koki)
     button_cancel.add(kokii)
 
-    # Обработка нажатий кнопок
     button_ok.connect("clicked", lambda w: on_response(dialog, "catfood"))
     button_cancel.connect("clicked", lambda w: on_response(dialog, "desert"))
 
-
-    # Добавляем кнопки в диалог
     dialog.action_area.pack_start(button_ok, True, True, 0)
     dialog.action_area.pack_start(button_cancel, True, True, 0)
 
@@ -222,7 +216,6 @@ def cond(event):
 def game(event):
     games = cattxt[2].strip()
     cicon = "icon.png"
-    # hi for programmers! oh! i want to say you what you are the best because you find this message! bye :3
     name = "catgameGTK"
 
     path = os.path.join(current_dir, f"data/{cicon}")
@@ -231,7 +224,6 @@ def game(event):
     pushn(path, name, f"{games} game(s)")
     
     cattxt[2] = f"{games}\n"
-    print(cattxt)
 
     with open(os.path.join(cdata, "cat.txt"), "w") as f:
         f.writelines(cattxt)
@@ -241,19 +233,18 @@ def eat():
     cicon = cattxt[3].strip()
     name = cattxt[0].strip()
 
-    path = os.path.join(current_dir, f"data/{cicon}")
-    pushn(path, name, "yummy!")
+    path = os.path.join(current_dir, "data/happy.png")
     
+    q_item.set_from_file(os.path.join(current_dir, "data/happy.png"))
     cattxt[1] = f"happy and not hungry\n"
     cattxt[3] = "happy.png"
-    print(cattxt)
 
     with open(os.path.join(cdata, "cat.txt"), "w") as f:
         f.writelines(cattxt)
     teat = int(time.time()) + 10800
     with open(os.path.join(cdata, "teat.txt"), "w") as f:
         f.write(f"{teat}")
-    q_item.set_from_file(os.path.join(current_dir, "data/happy.png"))
+    pushn(path, name, "yummy!")
 
 
 def main():
@@ -272,34 +263,23 @@ def main():
     caticon = cattxt[3].strip()
     path = os.path.join(current_dir, f"data/{caticon}")
 
-    # Создаем Box для размещения кнопок
     main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=1)
 
-    ceat()
-
     bb = Gtk.Box()
-    # Создаем Grid для размещения кнопок
     menu_grid = Gtk.ActionBar()
 
-
-    # Кнопка для создания файла
     create_file_item = Gtk.Button(label="store")
     create_file_item.connect("clicked", store)
     menu_grid.pack_start(create_file_item)
 
-
-    # Кнопка для выхода
     b_item = Gtk.Button(label="about this game")
     b_item.connect("clicked", infgame)
     menu_grid.pack_start(b_item)
 
-    # Кнопка для выхода
     se_item = Gtk.Button(label="\u2699")
     se_item.connect("clicked", setti)
     menu_grid.pack_end(se_item)
 
-
-    # Добавляем Grid в основной Box
     bb.pack_start(menu_grid, True, True, 0)
     main_box.pack_start(bb, False, True, 0)
 
@@ -314,6 +294,7 @@ def main():
     q_item = Gtk.Image.new_from_file(path)
     q_item.set_hexpand(True)
     cat_grid.attach(q_item, 0, 0, 1, 3)
+    ceat()
 
     inf_item = Gtk.Label(label=f"cat name: {name}")
     inf_item.set_hexpand(True)
@@ -339,18 +320,17 @@ def main():
     th_item.set_hexpand(True)
     cat_grid.attach(th_item, 1, 3, 1, 1)
 
+
     main_box.pack_end(cat_grid, False, True, 0)
 
-
-    # Добавляем основной Box в окно
     window.add(main_box)
 
-
-    window.show_all() # Показываем все элементы окна
-    Gtk.main() # Запускаем главный цикл приложения
+    window.show_all()
+    Gtk.main()
 
 
 def install():
+    # hi for programmers! oh! i want to say you what you are the best because you find this message! bye :3
     shdata = os.path.expanduser("~/.local/share")
 
     dialog = Gtk.Dialog("your cat name", None, 0,
@@ -366,7 +346,7 @@ def install():
     dialog.set_resizable(False)
     dialog.show_all()
 
-    response = dialog.run() # Ждем ответа от пользователя
+    response = dialog.run()
 
     if response == Gtk.ResponseType.OK:
         user_input = input_box.get_text()
