@@ -7,7 +7,12 @@ yup. i just recode my "catgame" project to python :3
 just "git clone" this repository (or download source code from release) to your home directory and install python3-gobject
 
 # roadmap
+--
+version: 1.4
+innovation: working store!
+version: 1.5
+innovation: new options in settings! (like "change cat name")
+version: 1.6
+innovation: custom hats!
 
-1.4 working store!\
-1.5 new options in settings! (like "change cat name")\
-1.6 custom hats!
+--
