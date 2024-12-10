@@ -14,6 +14,6 @@ i create some markdown table :3
 |---------|-------------|--------|------------|
 | 1.4 | custom cat skins! | in developing | drawing cat skins... |
 | 1.5 | working store! | not started |
-| 1.6 | new options in settings! (like "change cat name")! | not started |
+| 1.6 | new options in settings! (like "change cat name") | not started |
 | 1.7 | custom hats! | not started |
 | 1.8 | built-in upgrader! | not started |
