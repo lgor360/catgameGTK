@@ -15,3 +15,4 @@ i create some markdown table :3
 | 1.4     | working store! |
 | 1.5     | new options in settings! (like "change cat name")! |
 | 1.6     | custom hats! |
+| 1.7     | custom cat color! |
