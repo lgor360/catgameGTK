@@ -14,7 +14,7 @@ some description. yea
 write how this bug are happend.
 
 * template :D (real bug. fixed in 1.3.5 update)
-i feed the cat< close the programm on 3 hours< try to open game and... it didnt start... but if i try again it starts...
+i feed the cat, close the programm on 3 hours, try to open game and... it didnt start... but if i try again it starts...
 
 # THIRD: some info
 write your device model, linux distribution (with version) and python version
