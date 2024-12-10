@@ -10,9 +10,9 @@ just "git clone" this repository (or download source code from release) to your 
 
 i create some markdown table :3
 
-| version | innovations | status |
+| version | innovations | status | comment :3 |
 |---------|-------------|--------|
-| 1.4     | custom cat color! | in developing |
+| 1.4     | custom cat skins! | in developing | drawing cats skins |
 | 1.5     | working store! | not started |
 | 1.6     | new options in settings! (like "change cat name")! | not started |
 | 1.7     | custom hats! | not started |
