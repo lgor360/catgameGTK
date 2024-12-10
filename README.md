@@ -17,3 +17,4 @@ i create some markdown table :3
 | 1.6 | new options in settings! (like "change cat name") | not started |
 | 1.7 | custom hats! | not started |
 | 1.8 | built-in upgrader! | not started |
+| 1.9 | russian language support | not started |
