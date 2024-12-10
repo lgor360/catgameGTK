@@ -10,7 +10,7 @@ yup. i just recode my "catgame" project to python :3
 # how to install
 just "git clone" this repository (or download source code from release) to your home directory and run:
 ```bash
-sudo apt install python3-gobject requests
+sudo apt install python3-gobject python3-gi python3-requests
 ```
 
 # roadmap
