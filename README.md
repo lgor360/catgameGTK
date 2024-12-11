@@ -25,7 +25,3 @@ i create some markdown table :3
 | 1.7 | custom hats! | not started |
 | 1.8 | built-in upgrader! | not started |
 | 1.9 | russian language support! | not started |
-
-|m|k|y|
-|-|-|-|
-|t|h|u|
