@@ -17,11 +17,15 @@ sudo apt install python3-gobject python3-gi python3-requests
 
 i create some markdown table :3
 
-| version | innovations | status | comment :3 |
+| version | innovation | status | comment :3 |
 |---------|-------------|--------|------------|
 | 1.4 | custom cat skins! | in developing | writing code... |
 | 1.5 | working store! | not started |
 | 1.6 | new options in settings! (like "change cat name") | not started |
 | 1.7 | custom hats! | not started |
 | 1.8 | built-in upgrader! | not started |
-| 1.9 | russian language support | not started |
+| 1.9 | russian language support! | not started |
+
+|m|k|y|
+|-|-|-|
+|t|h|u|
