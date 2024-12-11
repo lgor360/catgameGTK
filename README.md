@@ -1,8 +1,8 @@
 # catgameGTK
 yup. i just recode my "catgame" project to python :3
 
-![shields.io badge](https://img.shields.io/badge/platform-linux-5c5027?labelColor=e6b30e&style=plastic)
-![shields.io badge](https://img.shields.io/badge/GTK-3.0-27435e?labelColor=106dc4&style=plastic)
+![shields.io badge](https://img.shields.io/badge/linux-e6b30e?style=plastic&logoColor=FFFFFF&logo=linux)
+![shields.io badge](https://img.shields.io/badge/GTK-3.0-27435e?labelColor=106dc4&style=plastic&logoColor=FFFFFF&logo=gtk)
 ![shields.io badge](https://img.shields.io/badge/cat_smile-:3-482c63?labelColor=6d1bbf&style=plastic)
 
 ![preview](https://github.com/user-attachments/assets/d7c60fc2-2bad-425e-85bf-4bda83b1a5dc)
