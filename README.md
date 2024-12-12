@@ -20,8 +20,8 @@ i create some markdown table :3
 |version|innovation|status|comment :3|
 |-|-|-|-|
 |1.4|custom cat skins!|![shields.io badge](https://img.shields.io/badge/in_developing...-yellow?style=plastic)|writing code...|
-|1.5|working store!|not started|
-|1.6|new options in settings! (like "change cat name")|not started|
-|1.7|custom hats!|not started|
-|1.8|built-in upgrader!|not started|
-|1.9|russian language support!|not started|
+|1.5|working store!|![shields.io badge](https://img.shields.io/badge/not_started-red?style=plastic)|
+|1.6|new options in settings! (like "change cat name")|![shields.io badge](https://img.shields.io/badge/not_started-red?style=plastic)|
+|1.7|custom hats!|![shields.io badge](https://img.shields.io/badge/not_started-red?style=plastic)|
+|1.8|built-in upgrader!|![shields.io badge](https://img.shields.io/badge/not_started-red?style=plastic)|
+|1.9|russian language support!|![shields.io badge](https://img.shields.io/badge/not_started-red?style=plastic)|
