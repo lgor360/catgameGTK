@@ -19,7 +19,7 @@ i create some markdown table :3
 
 |version|innovation|status|comment :3|
 |-|-|-|-|
-|1.4|custom cat skins!|![shields.io badge](https://img.shields.io/badge/cat_smile-:3-482c63?labelColor=6d1bbf&style=plastic)|writing code...|
+|1.4|custom cat skins!|![shields.io badge](https://img.shields.io/badge/in_developing...-yellow?style=plastic)|writing code...|
 |1.5|working store!|not started|
 |1.6|new options in settings! (like "change cat name")|not started|
 |1.7|custom hats!|not started|
