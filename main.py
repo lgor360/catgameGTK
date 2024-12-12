@@ -5,10 +5,10 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GdkPixbuf
 import time
 import requests
-import asyncio
+import random
 
-version = "1.3.5"
-versiona = "bug-fix 1.3.5"
+version = "1.4"
+versiona = "release 1.4"
 cdata = os.path.expanduser("~/.local/share/catdata")
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -56,13 +56,13 @@ def ceat():
         teat = int(teat)
         if int(time.time()) >= teat:
             cattxt[1] = f"sad and hungry\n"
-            cattxt[3] = "sad.png"
+            cattxt[3] = "sad.png\n"
             caticon = "sad.png"
-            path = os.path.join(current_dir, "data/sad.png")
+            path = os.path.join(current_dir, "data/{cview}/sad.png")
             with open(os.path.join(cdata, "cat.txt"), "w") as f:
                 f.writelines(cattxt)
             os.remove(os.path.join(cdata, "teat.txt"))
-            q_item.set_from_file(os.path.join(current_dir, f"data/sad.png"))
+            q_item.set_from_file(os.path.join(current_dir, f"data/{cview}/sad.png"))
 
     return
 
@@ -76,7 +76,7 @@ def on_response(dialog, ftype):
         eat()
     elif ftype == "desert":
         print("desert")
-        path = os.path.join(current_dir, f"data/{cicon}")
+        path = os.path.join(current_dir, f"data/{cview}/{cicon}")
         pushn(path, name, "tasty")
     elif ftype == "cancel":
         print("cancel")
@@ -200,7 +200,7 @@ def pur(event):
     cicon = cattxt[3].strip()
     name = cattxt[0].strip()
 
-    path = os.path.join(current_dir, f"data/{cicon}")
+    path = os.path.join(current_dir, f"data/{cview}/{cicon}")
     pushn(path, name, "purrrrrrrr")
 
 
@@ -233,11 +233,11 @@ def eat():
     cicon = cattxt[3].strip()
     name = cattxt[0].strip()
 
-    path = os.path.join(current_dir, "data/happy.png")
+    path = os.path.join(current_dir, f"data/{cview}/happy.png")
     
-    q_item.set_from_file(os.path.join(current_dir, "data/happy.png"))
+    q_item.set_from_file(os.path.join(current_dir, f"data/{cview}/happy.png"))
     cattxt[1] = f"happy and not hungry\n"
-    cattxt[3] = "happy.png"
+    cattxt[3] = "happy.png\n"
 
     with open(os.path.join(cdata, "cat.txt"), "w") as f:
         f.writelines(cattxt)
@@ -251,6 +251,20 @@ def main():
     global cattxt
     with open(os.path.join(cdata, "cat.txt"), "r", encoding="utf-8") as f:
        cattxt = f.readlines()
+    global cview
+
+    if 5 == len(cattxt):
+        cview = cattxt[4].strip()
+    else:
+        cattxt[3] = f"{cattxt[3]}\n"
+        randome = random.randint(1, 3)
+        cattxt.insert(4, f"{randome}")
+        with open(os.path.join(cdata, "cat.txt"), "w") as f:
+            f.writelines(cattxt)
+        with open(os.path.join(cdata, "cat.txt"), "r", encoding="utf-8") as f:
+            cattxt = f.readlines()
+        print(cattxt[4])
+        cview = cattxt[4].strip()
 
     check()
 
@@ -261,7 +275,7 @@ def main():
     window.connect("destroy", Gtk.main_quit)
     name = cattxt[0].strip()
     caticon = cattxt[3].strip()
-    path = os.path.join(current_dir, f"data/{caticon}")
+    path = os.path.join(current_dir, f"data/{cview}/{caticon}")
 
     main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=1)
 
@@ -349,12 +363,17 @@ def install():
     response = dialog.run()
 
     if response == Gtk.ResponseType.OK:
+        randome = random.randint(1, 3)
         user_input = input_box.get_text()
         print("cat name:", user_input)
-        os.makedirs(os.path.join(shdata, "catdata"), exist_ok=True)
-        cdata = os.path.expanduser("~/.local/share/catdata")
+
+        if os.path.isdir(cdata):
+            print("pikimiki")
+        else:
+            os.makedirs(os.path.join(shdata, "catdata"), exist_ok=True)
+
         with open(os.path.join(cdata, "cat.txt"), "w") as f:
-            f.write(f"{user_input}\nsad and hungry\n0\nsad.png")
+            f.write(f"{user_input}\nsad and hungry\n0\nsad.png\n{randome}")
         dialog.destroy()
         main()
     else:
@@ -362,7 +381,7 @@ def install():
 
 
 def start():
-    if os.path.isdir(os.path.expanduser("~/.local/share/catdata")):
+    if os.path.exists(os.path.join(cdata, "cat.txt")):
         main()
     else:
         install()
