@@ -20,7 +20,7 @@ i create some markdown table :3
 |version|innovation|status|comment :3|
 |-|-|-|-|
 |1.4|custom cat skins!|all done!|
-|1.5|working store!|preparing for start...|
+|1.5|working store!|painting hats...|
 |1.6|new options in settings! (like "change cat name")|not started|
 |1.7|custom hats!|not started|
 |1.8|built-in upgrader!|not started|
