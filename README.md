@@ -33,3 +33,4 @@ i create some markdown table :3
 |1.7|custom hats!|not started|
 |1.8|built-in upgrader!|not started|
 |1.9|russian language support!|not started|
+|2.0|mini games!|not started|
