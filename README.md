@@ -8,10 +8,13 @@ yup. i just recode my "catgame" project to python :3
 ![preview](https://github.com/user-attachments/assets/d7c60fc2-2bad-425e-85bf-4bda83b1a5dc)
 
 # how to install
-just "git clone" this repository (or download source code from release) to your home directory and run:
+1. run this command:
 ```bash
 sudo apt install python3-gobject python3-gi python3-requests
 ```
+2. just "git clone" this repository (or download source code from release) to some folder in your home directory.
+3. go to game folder and run main.py
+4. all done!
 
 # roadmap
 
