@@ -12,7 +12,6 @@ yup. i just recode my "catgame" project to python :3
 ```bash
 sudo apt install python3-gobject python3-gi python3-requests
 ```
-sorry but only apt :(
 2. just "git clone" this repository (or download source code from release) to some folder in your home directory.
 3. go to game folder and run main.py
 4. all done!
