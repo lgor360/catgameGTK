@@ -7,8 +7,8 @@ import time
 import requests
 import random
 
-version = "1.4"
-versiona = "release 1.4"
+version = "1.5"
+versiona = "release 1.5"
 cdata = os.path.expanduser("~/.local/share/catdata")
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -58,11 +58,11 @@ def ceat():
             cattxt[1] = f"sad and hungry\n"
             cattxt[3] = "sad.png\n"
             caticon = "sad.png"
-            path = os.path.join(current_dir, "data/{cview}/sad.png")
+            path = os.path.join(current_dir, f"data/colors/{cview}/sad.png")
             with open(os.path.join(cdata, "cat.txt"), "w") as f:
                 f.writelines(cattxt)
             os.remove(os.path.join(cdata, "teat.txt"))
-            q_item.set_from_file(os.path.join(current_dir, f"data/{cview}/sad.png"))
+            q_item.set_from_file(os.path.join(current_dir, f"data/colors/{cview}/sad.png"))
 
     return
 
@@ -70,32 +70,68 @@ def ceat():
 def on_response(dialog, ftype):
     cicon = cattxt[3].strip()
     name = cattxt[0].strip()
+    print(ftype)
 
     if ftype == "catfood":
-        print("catfood")
         eat()
     elif ftype == "desert":
-        print("desert")
-        path = os.path.join(current_dir, f"data/{cview}/{cicon}")
+        path = os.path.join(current_dir, f"data/colors/{cview}/{cicon}")
         pushn(path, name, "tasty")
-    elif ftype == "cancel":
-        print("cancel")
-
 
     dialog.destroy()
 
 
+def sethat(ftype):
+    het_item.set_from_file(os.path.join(current_dir, f"data/hats/{ftype}.png"))
+    if len(cattxt) >= 6:
+        cattxt.remove(cattxt[5])
+        print(cattxt)
+    cattxt[4] = f"{cattxt[4].strip()}\n"
+    cattxt.insert(5, ftype)
+    print(cattxt)
+    with open(os.path.join(cdata, "cat.txt"), "w") as f:
+        f.writelines(cattxt)
+
+
+def delhat():
+    het_item.set_from_pixbuf(None)
+    if len(cattxt) >= 6:
+        cattxt.remove(cattxt[5])
+        cattxt[4] = cattxt[4].strip()
+        print(cattxt)
+        with open(os.path.join(cdata, "cat.txt"), "w") as f:
+            f.writelines(cattxt)
+
+
 def store(button):
-    info_dialog = Gtk.MessageDialog(
-        parent=None,
-        flags=0,
-        message_type=Gtk.MessageType.ERROR,
-        buttons=Gtk.ButtonsType.OK,
-        text="under construction. sorry :("
-    )
-    
-    info_dialog.connect("response", lambda dialog, response: dialog.destroy())
-    info_dialog.show()
+    dialog = Gtk.Dialog("choose the hat", None, 0,)
+
+    l = Gtk.Label(label="select the hat for your cat :3")
+    dialog.vbox.pack_start(l, False, True, 0)
+
+    magicianshat = Gtk.Button()
+    oi = GdkPixbuf.Pixbuf.new_from_file(os.path.join(current_dir, "data/hats/magicianshat.png"))
+    oki = oi.scale_simple(140, 140, GdkPixbuf.InterpType.BILINEAR)
+    okii = Gtk.Image.new_from_pixbuf(oki)
+    magicianshat.add(okii)
+    cap = Gtk.Button()
+    koi = GdkPixbuf.Pixbuf.new_from_file(os.path.join(current_dir, "data/hats/cap.png"))
+    koki = koi.scale_simple(140, 140, GdkPixbuf.InterpType.BILINEAR)
+    kokii = Gtk.Image.new_from_pixbuf(koki)
+    cap.add(kokii)
+    delete = Gtk.Button(label="remove the hat")
+
+    delete.connect("clicked", lambda w: delhat())
+    magicianshat.connect("clicked", lambda w: sethat("magicianshat"))
+    cap.connect("clicked", lambda w: sethat("cap"))
+
+    dialog.action_area.pack_start(magicianshat, True, True, 0)
+    dialog.action_area.pack_start(cap, True, True, 0)
+    dialog.action_area.pack_start(delete, True, True, 0)
+
+    dialog.set_default_size(200, 70)
+    dialog.set_resizable(False)
+    dialog.show_all()
 
 
 def sseti(dialog, se):
@@ -200,7 +236,7 @@ def pur(event):
     cicon = cattxt[3].strip()
     name = cattxt[0].strip()
 
-    path = os.path.join(current_dir, f"data/{cview}/{cicon}")
+    path = os.path.join(current_dir, f"data/colors/{cview}/{cicon}")
     pushn(path, name, "purrrrrrrr")
 
 
@@ -233,9 +269,9 @@ def eat():
     cicon = cattxt[3].strip()
     name = cattxt[0].strip()
 
-    path = os.path.join(current_dir, f"data/{cview}/happy.png")
+    path = os.path.join(current_dir, f"data/colors/{cview}/happy.png")
     
-    q_item.set_from_file(os.path.join(current_dir, f"data/{cview}/happy.png"))
+    q_item.set_from_file(os.path.join(current_dir, f"data/colors/{cview}/happy.png"))
     cattxt[1] = f"happy and not hungry\n"
     cattxt[3] = "happy.png\n"
 
@@ -251,11 +287,10 @@ def main():
     global cattxt
     with open(os.path.join(cdata, "cat.txt"), "r", encoding="utf-8") as f:
        cattxt = f.readlines()
+    print(cattxt)
     global cview
 
-    if 5 == len(cattxt):
-        cview = cattxt[4].strip()
-    else:
+    if 4 == len(cattxt):
         cattxt[3] = f"{cattxt[3]}\n"
         randome = random.randint(1, 3)
         cattxt.insert(4, f"{randome}")
@@ -264,6 +299,8 @@ def main():
         with open(os.path.join(cdata, "cat.txt"), "r", encoding="utf-8") as f:
             cattxt = f.readlines()
         print(cattxt[4])
+        cview = cattxt[4].strip()
+    else:
         cview = cattxt[4].strip()
 
     check()
@@ -275,14 +312,15 @@ def main():
     window.connect("destroy", Gtk.main_quit)
     name = cattxt[0].strip()
     caticon = cattxt[3].strip()
-    path = os.path.join(current_dir, f"data/{cview}/{caticon}")
+    print(f"data/colors/{cview}/{caticon}")
+    path = os.path.join(current_dir, f"data/colors/{cview}/{caticon}")
 
     main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=1)
 
     bb = Gtk.Box()
     menu_grid = Gtk.ActionBar()
 
-    create_file_item = Gtk.Button(label="store")
+    create_file_item = Gtk.Button(label="hats")
     create_file_item.connect("clicked", store)
     menu_grid.pack_start(create_file_item)
 
@@ -303,6 +341,16 @@ def main():
 
     cat_grid = Gtk.Grid()
     cat_grid.set_row_homogeneous(True)
+
+    global het_item
+    het_item = Gtk.Image()
+
+    if 6 == len(cattxt):
+        het_item.set_from_file(os.path.join(current_dir, f"data/hats/{cattxt[5]}.png"))
+        print(os.path.join(current_dir, f"data/hats/{cattxt[5]}.png"))
+
+    het_item.set_hexpand(True)
+    cat_grid.attach(het_item, 0, 0, 1, 3)
 
     global q_item
     q_item = Gtk.Image.new_from_file(path)
