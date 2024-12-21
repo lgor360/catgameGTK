@@ -7,8 +7,8 @@ import time
 import requests
 import random
 
-version = "1.5"
-versiona = "release 1.5"
+version = "1.6"
+versiona = "release 1.6"
 cdata = os.path.expanduser("~/.local/share/catdata")
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -147,6 +147,63 @@ def sseti(dialog, se):
     dialog.destroy()
 
 
+def deletecat(func):
+    pushn(os.path.join(current_dir, f"data/colors/{cview}/{cattxt[3].strip()}"), cattxt[0].strip(), "what?..")
+    warning = Gtk.MessageDialog(
+        title="catgameGTK",
+        message_type=Gtk.MessageType.WARNING,
+        buttons=Gtk.ButtonsType.OK_CANCEL,
+        text="are you sure want to delete your cat?"
+    )
+    warning.format_secondary_text(
+        "you cant undo this!!!!"
+    )
+    response = warning.run()
+    if response == Gtk.ResponseType.OK:
+        pushn(os.path.join(current_dir, f"data/colors/{cview}/{cattxt[3].strip()}"), cattxt[0].strip(), "oh...")
+        time.sleep(1)
+        warning.destroy()
+        pushn(os.path.join(current_dir, f"data/icon.png"), "catgameGTK", "deleting your cat...")
+        inf_item.set_text("cat name: cat_name")
+        q_item.set_from_file(os.path.join(current_dir, "data/colors/cview/happy.png"))
+        het_item.set_from_file(os.path.join(current_dir, "data/colors/cview/happy.png"))
+        pushn(os.path.join(current_dir, f"data/colors/{cview}/cat_status.png"), "cat_name", "AAAAAAAAAAAAAAAAAA")
+        if os.path.exists(os.path.join(cdata, "teat.txt")):
+            os.remove(os.path.join(cdata, "teat.txt"))
+        os.remove(os.path.join(cdata, "cat.txt"))
+        os.rmdir(os.path.expanduser("~/.local/share/catdata"))
+        pushn(os.path.join(current_dir, f"data/icon.png"), "catgameGTK", "success!")
+        Gtk.main_quit()
+    else:
+        warning.destroy()
+
+
+def rencat(func):
+    dialog = Gtk.Dialog("your cat name", None, 0,
+                        (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                          Gtk.STOCK_OK, Gtk.ResponseType.OK))
+
+
+    input_box = Gtk.Entry()
+    dialog.vbox.pack_start(input_box, True, True, 0)
+
+
+    dialog.set_default_size(200, 70)
+    dialog.set_resizable(False)
+    dialog.show_all()
+
+    response = dialog.run()
+
+    if response == Gtk.ResponseType.OK:
+        user_input = input_box.get_text()
+        cattxt[0] = f"{user_input}\n"
+        print(cattxt)
+        with open(os.path.join(cdata, "cat.txt"), "w") as f:
+            f.writelines(cattxt)
+        inf_item.set_text(f"cat name: {user_input}")
+    dialog.destroy()
+
+
 def setti(event):
     if os.path.exists(os.path.join(current_dir, "data/settings.txt")):
         with open(os.path.join(current_dir, "data/settings.txt"), "r", encoding="utf-8") as f:
@@ -158,10 +215,13 @@ def setti(event):
             conf = f.readlines()
 
     dialog = Gtk.Dialog("settings", None, 0)
+    # hi for programmers! oh! i want to say you what you are the best because you find this message! bye :3
 
-    listi = Gtk.Grid()
-    listi.set_row_homogeneous(True)
-    dialog.vbox.add(listi)
+    box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=1)
+    upgra = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=1)
+    box.set_homogeneous(True)
+    dialog.vbox.add(box)
+    box.add(upgra)
 
     l = Gtk.Label(label="check for updates")
     l.set_hexpand(True)
@@ -172,16 +232,24 @@ def setti(event):
     updates = Gtk.Switch()
     updates.set_hexpand(True)
     updates.set_active(bool(int(conf[0].strip())))
+    rename = Gtk.Button(label="rename your cat")
+    rename.set_hexpand(True)
+    delcat = Gtk.Button(label="delete your cat (save data)")
+    delcat.set_hexpand(True)
 
     button_ok.connect("clicked", lambda w: sseti(dialog, updates))
     button_cancel.connect("clicked", lambda w: on_response(dialog, "cancel"))
+    delcat.connect("clicked", lambda w: deletecat("settings"))
+    rename.connect("clicked", lambda w: rencat("settings"))
 
-    listi.attach(l, 0, 0, 3, 1)
-    listi.attach(updates, 4, 0, 1, 1)
+    upgra.add(l)
+    upgra.add(updates)
+    box.add(rename)
+    box.add(delcat)
     dialog.action_area.add(button_cancel)
     dialog.action_area.add(button_ok)
 
-    dialog.set_default_size(190, 70)
+    dialog.set_default_size(240, 70)
     dialog.set_resizable(False)
     dialog.show_all()
 
@@ -225,7 +293,9 @@ def infgame(button):
     ab.set_authors(["Igor360"])
     ab.set_website("https://github.com/lgor360/catgameGTK")
     ab.set_license(license)
-    ab.set_logo(GdkPixbuf.Pixbuf.new_from_file(os.path.join(current_dir, "data/icon.png")))
+    ic = GdkPixbuf.Pixbuf.new_from_file(os.path.join(current_dir, "data/icon.png"))
+    icon = ic.scale_simple(150, 150, GdkPixbuf.InterpType.BILINEAR)
+    ab.set_logo(icon)
     ab.connect("response", lambda dialog, response: dialog.destroy())
     ab.show()
 
@@ -245,19 +315,17 @@ def cond(event):
     cicon = cattxt[3].strip()
     name = cattxt[0].strip()
 
-    path = os.path.join(current_dir, f"data/{cicon}")
+    path = os.path.join(current_dir, f"data/colors/{cview}/{cicon}")
     pushn(path, name, condition)
 
 
 def game(event):
     games = cattxt[2].strip()
-    cicon = "icon.png"
-    name = "catgameGTK"
 
-    path = os.path.join(current_dir, f"data/{cicon}")
+    path = os.path.join(current_dir, f"data/icon.png")
     games = int(games)
     games += 1
-    pushn(path, name, f"{games} game(s)")
+    pushn(path, "catgameGTK", f"{games} game(s)")
     
     cattxt[2] = f"{games}\n"
 
@@ -358,6 +426,7 @@ def main():
     cat_grid.attach(q_item, 0, 0, 1, 3)
     ceat()
 
+    global inf_item
     inf_item = Gtk.Label(label=f"cat name: {name}")
     inf_item.set_hexpand(True)
     cat_grid.attach(inf_item, 0, 3, 1, 1)
@@ -392,7 +461,6 @@ def main():
 
 
 def install():
-    # hi for programmers! oh! i want to say you what you are the best because you find this message! bye :3
     shdata = os.path.expanduser("~/.local/share")
 
     dialog = Gtk.Dialog("your cat name", None, 0,
