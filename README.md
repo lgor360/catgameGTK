@@ -57,8 +57,7 @@ i create some markdown table :3
 
 |version|innovation|status|comment :3|
 |-|-|-|-|
-|1.5|working store!|all done!|
-|1.6|new options in settings! (like "change cat name")|in developing...|
+|1.6|new options in settings! (like "change cat name")|all done!|
 |1.7|built-in upgrader!|not started|
 |1.8|russian language support!|not started|
 |1.9|custom hats!|not started|
