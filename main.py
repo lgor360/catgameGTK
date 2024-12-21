@@ -7,8 +7,8 @@ import time
 import requests
 import random
 
-version = "1.6"
-versiona = "release 1.6"
+version = "1.6.5"
+versiona = "add-pack 1.6.5"
 cdata = os.path.expanduser("~/.local/share/catdata")
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -160,7 +160,7 @@ def deletecat(func):
     )
     response = warning.run()
     if response == Gtk.ResponseType.OK:
-        pushn(os.path.join(current_dir, f"data/colors/{cview}/{cattxt[3].strip()}"), cattxt[0].strip(), "oh...")
+        pushn(os.path.join(current_dir, f"data/colors/{cview}/sad.png"), cattxt[0].strip(), "oh...")
         time.sleep(1)
         warning.destroy()
         pushn(os.path.join(current_dir, f"data/icon.png"), "catgameGTK", "deleting your cat...")
@@ -479,17 +479,22 @@ def install():
     response = dialog.run()
 
     if response == Gtk.ResponseType.OK:
-        randome = random.randint(1, 3)
         user_input = input_box.get_text()
-        print("cat name:", user_input)
+        print(f"cat name: {user_input}")
+        randome = random.randint(1, 3)
 
         if os.path.isdir(cdata):
             print("pikimiki")
         else:
             os.makedirs(os.path.join(shdata, "catdata"), exist_ok=True)
 
-        with open(os.path.join(cdata, "cat.txt"), "w") as f:
-            f.write(f"{user_input}\nsad and hungry\n0\nsad.png\n{randome}")
+        if user_input == "i dont care":
+            with open(os.path.join(cdata, "cat.txt"), "w") as f:
+                f.write("jax\nsad and hungry\n0\nsad.png\n10-1-24\ncap")
+        else:
+            with open(os.path.join(cdata, "cat.txt"), "w") as f:
+                f.write(f"{user_input}\nsad and hungry\n0\nsad.png\n{randome}")
+            
         dialog.destroy()
         main()
     else:
