@@ -58,7 +58,8 @@ i create some markdown table :3
 |version|innovation|status|comment :3|
 |-|-|-|-|
 |1.6|new options in settings! (like "change cat name")|all done!|
-|1.7|built-in upgrader!|not started|
-|1.8|russian language support!|not started|
-|1.9|custom hats!|not started|
-|2.0|mini games!|not started|
+|1.7|gtk4|not started|
+|1.8|built-in upgrader!|not started|
+|1.9|russian language support!|not started|
+|2.0|custom hats!|not started|
+|2.1|mini games!|not started|
