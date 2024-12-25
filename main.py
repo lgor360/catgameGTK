@@ -6,15 +6,104 @@ from gi.repository import Gtk, Gdk, GdkPixbuf
 import time
 import requests
 import random
+import zipfile
+from io import BytesIO
+import shutil
 
-version = "1.6.5"
-versiona = "add-pack 1.6.5"
+version = "1.7"
+versiona = "release 1.7"
 cdata = os.path.expanduser("~/.local/share/catdata")
 current_dir = os.path.dirname(os.path.abspath(__file__))
+
 
 def pushn(p, n, m):
     subprocess.call(['notify-send', '-i', p, n, m])
     return
+
+
+def upgrader():
+    username = "lgor360"
+    repo = "catgameGTK"
+
+    url = f'https://api.github.com/repos/{username}/{repo}/releases/latest'
+
+    response = requests.get(url)
+    if response.status_code == 200:
+        release_data = response.json()
+        zipball_url = release_data['zipball_url']
+
+        download_path = os.path.dirname(os.path.abspath(__file__))
+
+        zip_response = requests.get(zipball_url)
+        if zip_response.status_code == 200:
+            if os.path.isfile(os.path.join(current_dir, "data/settings.txt")):
+                with open(os.path.join(current_dir, "data/settings.txt"), "r", encoding="utf-8") as f:
+                    conf = f.readlines()
+                
+            shutil.rmtree(download_path)
+            os.makedirs(download_path, exist_ok=True)
+            with zipfile.ZipFile(BytesIO(zip_response.content)) as zip_file:
+                zip_file.extractall(download_path) 
+
+            extracted_folder = os.path.join(download_path, os.listdir(download_path)[0])
+        
+            github_folder = os.path.join(extracted_folder, ".github")
+            if os.path.exists(github_folder):
+                shutil.rmtree(github_folder)
+
+            for item in ["LICENSE", "README.md"]:
+                item_path = os.path.join(extracted_folder, item)
+                if os.path.isfile(item_path):
+                    os.remove(item_path) 
+        
+            for item in os.listdir(extracted_folder):
+                item_path = os.path.join(extracted_folder, item)
+                if item != ".github": 
+                    os.rename(item_path, os.path.join(download_path, item))
+        
+            os.rmdir(extracted_folder) 
+
+            
+            with open(os.path.join(download_path, "data/settings.txt"), "w") as f:
+                f.writelines(conf)
+            
+            pushn(os.path.join(current_dir, f"data/icon.png"), "catgameGTK", "game is up-to-date now! restart the game")
+        else:
+            info_dialog = Gtk.MessageDialog(
+                parent=None,
+                flags=0,
+                message_type=Gtk.MessageType.ERROR,
+                buttons=Gtk.ButtonsType.OK,
+                text="ERROR! update cant be download! sorry!"
+            )
+    else:
+        info_dialog = Gtk.MessageDialog(
+            parent=None,
+            flags=0,
+            message_type=Gtk.MessageType.ERROR,
+            buttons=Gtk.ButtonsType.OK,
+            text="ERROR! i cant get latest release info on github! sorry!"
+        )
+    return
+
+
+def upsure(v):
+    warning = Gtk.MessageDialog(
+        title="catgameGTK",
+        message_type=Gtk.MessageType.WARNING,
+        buttons=Gtk.ButtonsType.OK_CANCEL,
+        text=f"WAIT! a new version of catgameGTK has been released! please upgrade this game to {v} or you can start update now!"
+    )
+    warning.format_secondary_text(
+        "click OK if u want to start update now"
+    )
+    response = warning.run()
+    if response == Gtk.ResponseType.OK:
+        upgrader()
+        warning.destroy()
+        Gtk.main_quit()
+    else:
+        warning.destroy()
 
 
 def check():
@@ -22,7 +111,7 @@ def check():
         with open(os.path.join(current_dir, "data/settings.txt"), "r", encoding="utf-8") as f:
             conf = f.readlines()
     else:
-        conf = "1"
+        conf = ["1"]
     if not int(conf[0].strip()) == 0:
         response = requests.get('https://api.github.com/repos/lgor360/catgameGTK/releases/latest')
 
@@ -34,16 +123,7 @@ def check():
                 pushn(os.path.join(current_dir, f"data/icon.png"), "catgameGTK", "how do you find this beta version of catgameGTK...")
             elif version < v:
                 print("old")
-                info_dialog = Gtk.MessageDialog(
-                    parent=None,
-                    flags=0,
-                    message_type=Gtk.MessageType.ERROR,
-                    buttons=Gtk.ButtonsType.OK,
-                    text=f"WAIT! a new version of catgameGTK has been released! please upgrade this game to {v}"
-                )
-        
-                info_dialog.connect("response", lambda dialog, response: dialog.destroy())
-                info_dialog.show()
+                upsure(v)
         else:
             print(f'error: {response.status_code} - {response.text}')
     return
@@ -107,7 +187,7 @@ def store(button):
     dialog = Gtk.Dialog("choose the hat", None, 0,)
 
     l = Gtk.Label(label="select the hat for your cat :3")
-    dialog.vbox.pack_start(l, False, True, 0)
+    dialog.vbox.pack_start(l, False, True, 10)
 
     magicianshat = Gtk.Button()
     oi = GdkPixbuf.Pixbuf.new_from_file(os.path.join(current_dir, "data/hats/magicianshat.png"))
@@ -258,7 +338,7 @@ def what(event):
     dialog = Gtk.Dialog("feed the cat", None, 0,)
 
     l = Gtk.Label(label="choose the food")
-    dialog.vbox.pack_start(l, False, True, 0)
+    dialog.vbox.pack_start(l, False, True, 10)
 
     button_ok = Gtk.Button()
     oi = GdkPixbuf.Pixbuf.new_from_file(os.path.join(current_dir, "data/cf.png"))
@@ -373,11 +453,11 @@ def main():
 
     check()
 
-    window = Gtk.Window(title="catgameGTK")
-    window.set_icon_from_file(os.path.join(current_dir, "data/icon.png"))
+    window = Gtk.ApplicationWindow(application=app, title="catgameGTK")
+    # window.set_icon_from_file(os.path.join(current_dir, "data/icon.png"))
     window.set_default_size(500, 250)
     window.set_resizable(False)
-    window.connect("destroy", Gtk.main_quit)
+    # window.connect("destroy", Gtk.main_quit)
     name = cattxt[0].strip()
     caticon = cattxt[3].strip()
     print(f"data/colors/{cview}/{caticon}")
@@ -508,4 +588,10 @@ def start():
         install()
 
 
-start()
+def on_activate(u):
+    start()
+
+
+app = Gtk.Application(application_id="org.Igor360.catgameGTK")
+app.connect("activate", on_activate)
+app.run(None)
