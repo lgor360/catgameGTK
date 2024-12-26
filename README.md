@@ -62,3 +62,4 @@ i create some markdown table :3
 |1.9|custom hats!|not started|
 |2.0|mini games!|not started|
 |2.1|big update of cats!|not started|
+|2.2|CUSTOM CATS!!!!|not started|
