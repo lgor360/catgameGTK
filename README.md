@@ -30,7 +30,7 @@ pip install requests
 
 #### create .desktop file
 
-you can also create a .desktop file for app! just create org.Igor360.catgameGTK.desktop and paste this intro file:
+you also need to create a .desktop file for app! just create org.Igor360.catgameGTK.desktop and paste this intro file:
 
 ```
 [Desktop Entry]
