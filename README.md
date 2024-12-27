@@ -11,7 +11,7 @@ yup. i just recode my "catgame" project to python :3
 packaging to dpkg...
 
 ## how to install
-### ubuntu/debian
+### from apt
 soon...
 ### from source code
 1. run this command if you have apt:
