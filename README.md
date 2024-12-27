@@ -7,8 +7,13 @@ yup. i just recode my "catgame" project to python :3
 
 ![preview](https://github.com/user-attachments/assets/4bbf9bf0-23be-42c4-bf75-2a93a82ab391)
 
+## news
+packaging to dpkg...
 
-# how to install
+## how to install
+### ubuntu/debian
+soon...
+### from source code
 1. run this command if you have apt:
 ```bash
 sudo apt install python3-gobject python3-gi python3-requests
@@ -23,7 +28,7 @@ pip install requests
 4. all done!
 
 
-# create .desktop file
+#### create .desktop file
 
 you can also create a .desktop file for app! just create org.Igor360.catgameGTK.desktop and paste this intro file:
 
