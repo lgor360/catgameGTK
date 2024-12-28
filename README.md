@@ -38,7 +38,7 @@ Type=Application
 Name=catgameGTK
 Comment=tamogochi but on PyGObject!
 Icon=/part/to/icon.png
-Exec=python3 main.py
+Exec=./catgamegtk
 Path=/path/to/gamefolder
 Actions=
 Categories=Game;#
@@ -62,8 +62,7 @@ i create some markdown table :3
 
 |version|innovation|status|
 |-|-|-|
-|1.7|built-in upgrader!|all done!|
-|1.8|russian language support! and... CRITICAL TRANSFER TO DEB PACKAGE|in developing...|
+|1.8|russian language support! and... CRITICAL TRANSFER TO DEB PACKAGE|all done!|
 |1.9|custom hats!|not started|
 |2.0|mini games!|not started|
 |2.1|big update of cats!|not started|
