@@ -12,8 +12,13 @@ yup. i just recode my "catgame" project to python :3
 
 
 ## how to install
-### from apt
-soon...
+### from .deb file
+1. download .deb file from latest release
+2. install deb package. recommended:
+```bash
+sudo apt install ./catgamegtk.deb
+```
+3. all done!
 ### from source code
 1. run this command if you have apt:
 ```bash
