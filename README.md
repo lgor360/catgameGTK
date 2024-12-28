@@ -8,7 +8,8 @@ yup. i just recode my "catgame" project to python :3
 ![preview](https://github.com/user-attachments/assets/4bbf9bf0-23be-42c4-bf75-2a93a82ab391)
 
 ## news
-packaging to dpkg...
+![Без названия5_20241228224904](https://github.com/user-attachments/assets/2866a1f9-c374-4491-a3c2-3005d2e98918)
+
 
 ## how to install
 ### from apt
