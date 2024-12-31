@@ -30,7 +30,10 @@ pip install PyGObject
 pip install requests
 ```
 2. just "git clone" this repository (or download source code from release) to some folder in your home directory.
-3. go to game folder and run main.py
+3. go to game folder and run catgamegtk file
+```bash
+./catgamegtk
+```
 4. all done!
 
 
