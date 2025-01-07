@@ -80,6 +80,7 @@ i create some markdown table :3
 |2.3|CUSTOM CATS!!!!|not started|
 
 ## why i want to upgrade the UI?
-because... now i fully learned pygobject so i can create really cool apps! and now i want to fully upgrade my game UI!
+because... now i fully learned pygobject so i can create really cool apps! and now i want to fully upgrade my game UI!\
 i want to do something like this:
+
 (picture is be here soon)
