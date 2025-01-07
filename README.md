@@ -73,7 +73,13 @@ i create some markdown table :3
 |version|innovation|status|
 |-|-|-|
 |1.8|russian language support! and... CRITICAL TRANSFER TO DEB PACKAGE|all done!|
-|1.9|custom hats!|not started|
-|2.0|mini games!|not started|
-|2.1|big update of cats!|not started|
-|2.2|CUSTOM CATS!!!!|not started|
+|1.9|big UI upgrade!|not started|
+|2.0|custom hats!|not started|
+|2.1|mini games!|not started|
+|2.2|big update of cats!|not started|
+|2.3|CUSTOM CATS!!!!|not started|
+
+## why i want to upgrade the UI?
+because... now i fully learned pygobject so i can create really cool apps! and now i want to fully upgrade my game UI!
+i want to do something like this:
+(picture is be here soon)
