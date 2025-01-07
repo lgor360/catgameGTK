@@ -83,4 +83,5 @@ i create some markdown table :3
 because... now i fully learned pygobject so i can create really cool apps! and now i want to fully upgrade my game UI!\
 i want to do something like this:
 
-(picture is be here soon)
+![layout](https://github.com/user-attachments/assets/5a5e3d14-2796-48db-8f8f-e63920abcf49)
+
