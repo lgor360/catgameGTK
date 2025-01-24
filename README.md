@@ -1,6 +1,6 @@
 # catgameGTK
 yup. i just recode my "catgame" project to python :3\
-the game won't be updated until January 14. i'm on holidays :)
+guys, i cant do upgrades because i developing [oldemmi](https://github.com/lgor360/oldemmi) but oldemmi will be done soon!
 
 ![shields.io badge](https://img.shields.io/badge/linux-e6b30e?labelColor=e6b30e&style=plastic&logoColor=FFFFFF&logo=linux)
 ![shields.io badge](https://img.shields.io/badge/GTK_3.0-106dc4?labelColor=106dc4&style=plastic&logoColor=FFFFFF&logo=gtk)
@@ -80,6 +80,7 @@ i create some markdown table :3
 |2.3|big update of cats feelings!|not started|
 |2.4|CUSTOM CATS!!!!|not started|
 |2.5|new settings (using Gtk.TreeView)|not started|
+|2.6|seal mode🦭|not started|
 
 ## why i want to upgrade the UI?
 because... now i fully learned pygobject so i can create really cool apps! and now i want to fully upgrade my game UI!\
