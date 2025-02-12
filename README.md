@@ -22,12 +22,13 @@ sudo apt install ./catgamegtk.deb
 ### from source code
 1. run this command if you have apt:
 ```bash
-sudo apt install python3-gobject python3-gi python3-requests
+sudo apt install python3-gi python3-requests python3-notify2
 ```
 or this commands if you have pip (pipx):
 ```bash
 pip install PyGObject
 pip install requests
+pip install notify2
 ```
 2. just "git clone" this repository (or download source code from release) to some folder in your home directory.
 3. go to game folder and run catgamegtk file
