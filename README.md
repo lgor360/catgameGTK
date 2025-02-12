@@ -5,11 +5,7 @@ yup. i just recode my "catgame" project to python :3
 ![shields.io badge](https://img.shields.io/badge/GTK_3.0-106dc4?labelColor=106dc4&style=plastic&logoColor=FFFFFF&logo=gtk)
 ![shields.io badge](https://img.shields.io/badge/cat_smile-:3-482c63?labelColor=6d1bbf&style=plastic)
 
-![preview](https://github.com/user-attachments/assets/4bbf9bf0-23be-42c4-bf75-2a93a82ab391)
-
-## news
-![Без названия5_20241228224904](https://github.com/user-attachments/assets/2866a1f9-c374-4491-a3c2-3005d2e98918)
-
+![preview](https://github.com/user-attachments/assets/e73510fc-1b4b-4906-b7fc-32f62fdc93ec)
 
 ## how to install
 ### from .deb file
@@ -72,19 +68,11 @@ i create some markdown table :3
 
 |version|innovation|status|
 |-|-|-|
-|1.8|russian language support! and... CRITICAL TRANSFER TO DEB PACKAGE|all done!|
-|1.9|big UI upgrade!|under developement|
-|2.0|new hats!|not started|
-|2.1|custom hats!|not started|
-|2.2|mini games!|not started|
-|2.3|big update of cats feelings!|not started|
-|2.4|CUSTOM CATS!!!!|not started|
-|2.5|new settings (using Gtk.TreeView)|not started|
-|2.6|seal mode🦭|not started|
-
-## why i want to upgrade the UI?
-because... now i fully learned pygobject so i can create really cool apps! and now i want to fully upgrade my game UI!\
-i want to do something like this:
-
-![layout](https://github.com/user-attachments/assets/5a5e3d14-2796-48db-8f8f-e63920abcf49)
-
+|1.9|big UI upgrade!|all done!|
+|2.0|seal mode🦭|not started|
+|2.1|new hats!|not started|
+|2.2|custom hats!|not started|
+|2.3|mini games!|not started|
+|2.4|big update of cats feelings!|not started|
+|2.5|CUSTOM CATS!!!!|not started|
+|2.6|new settings (using Gtk.TreeView)|not started|
