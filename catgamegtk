@@ -20,8 +20,8 @@ if dpkg == 1:
 else:
     datapath = os.path.join(current_dir, "data/")
 
-version = "1.8"
-versiona = "release 1.8"
+version = "1.9"
+versiona = "release 1.9"
 cdata = os.path.expanduser("~/.local/share/catdata")
 if os.environ.get("LANG") == "ru_RU.UTF-8":
     lang = "RU"
