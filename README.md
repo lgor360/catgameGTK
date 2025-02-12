@@ -1,6 +1,5 @@
 # catgameGTK
 yup. i just recode my "catgame" project to python :3\
-guys, i cant do upgrades because i developing [oldemmi](https://github.com/lgor360/oldemmi) but oldemmi will be done soon!
 
 ![shields.io badge](https://img.shields.io/badge/linux-e6b30e?labelColor=e6b30e&style=plastic&logoColor=FFFFFF&logo=linux)
 ![shields.io badge](https://img.shields.io/badge/GTK_3.0-106dc4?labelColor=106dc4&style=plastic&logoColor=FFFFFF&logo=gtk)
@@ -73,7 +72,7 @@ i create some markdown table :3
 |version|innovation|status|
 |-|-|-|
 |1.8|russian language support! and... CRITICAL TRANSFER TO DEB PACKAGE|all done!|
-|1.9|big UI upgrade!|not started|
+|1.9|big UI upgrade!|under developement|
 |2.0|new hats!|not started|
 |2.1|custom hats!|not started|
 |2.2|mini games!|not started|
