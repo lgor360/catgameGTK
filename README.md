@@ -69,7 +69,7 @@ i create some markdown table :3
 |version|innovation|status|
 |-|-|-|
 |1.9|big UI upgrade!|all done!|
-|2.0|seal mode🦭|not started|
+|2.0|seal mode🦭 and shadows|not started|
 |2.1|new hats!|not started|
 |2.2|custom hats!|not started|
 |2.3|mini games!|not started|
