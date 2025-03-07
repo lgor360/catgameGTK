@@ -1,0 +1,57 @@
+[updates  messages]
+WAIT! a new version of catgameGTK has been released! please upgrade this game to
+how do you find this beta version of catgameGTK...
+
+[hats]
+choose the hat
+select the hat for your pet :3
+remove the hat
+
+[deletecat]
+are you sure want to delete your pet?
+you cant undo this!!!!
+
+[rencat/createcat]
+create your pet
+edit the pet's name
+select the pet
+cat
+seal
+
+[settings]
+check for updates
+rename your pet
+delete your pet (save data)
+save
+cancel
+
+[select food]
+choose the food
+
+[about]
+the game was made in 2024
+i say hello from Russia!
+game is recoded from bash to python
+
+[pur]
+purrrrrrrr
+
+[condition]
+happy and not hungry
+sad and hungry
+
+[games]
+game(s)
+
+[eat]
+yummy!
+tasty
+
+[main]
+hats
+about this game
+feed the pet
+give a toy
+pet the pet :P
+pet condition
+pet name

@@ -20,8 +20,8 @@ if dpkg == 1:
 else:
     datapath = os.path.join(current_dir, "data/")
 
-version = "1.9"
-versiona = "release 1.9"
+version = "2.0"
+versiona = "release 2.0"
 cdata = os.path.expanduser("~/.local/share/catdata")
 if os.environ.get("LANG") == "ru_RU.UTF-8":
     lang = "RU"
@@ -108,7 +108,7 @@ def on_response(dialog, ftype):
         eat()
     elif ftype == "desert":
         path = os.path.join(datapath, f"colors/{cview}/{cicon}")
-        pushn(path, name, f"{langfile[43].strip()}")
+        pushn(path, name, f"{langfile[47].strip()}")
 
     dialog.destroy()
 
@@ -211,7 +211,7 @@ def deletecat(func):
 
 
 def rencat(func):
-    dialog = Gtk.Dialog(f"{langfile[14].strip()}", None, 0,
+    dialog = Gtk.Dialog(f"{langfile[15].strip()}", None, 0,
                         (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                           Gtk.STOCK_OK, Gtk.ResponseType.OK))
 
@@ -255,11 +255,11 @@ def setti(event):
 
     upgra = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=1)
     box.add(upgra)
-    l = Gtk.Label(label=f"{langfile[17].strip()}")
+    l = Gtk.Label(label=f"{langfile[21].strip()}")
     l.set_hexpand(True)
-    button_ok = Gtk.Button(label=f"{langfile[20].strip()}")
+    button_ok = Gtk.Button(label=f"{langfile[24].strip()}")
     button_ok.set_hexpand(True)
-    button_cancel = Gtk.Button(label=f"{langfile[21].strip()}")
+    button_cancel = Gtk.Button(label=f"{langfile[25].strip()}")
     button_cancel.set_hexpand(True)
     updates = Gtk.Switch()
     updates.set_hexpand(True)
@@ -270,9 +270,9 @@ def setti(event):
     dialog.action_area.add(button_ok)
     button_ok.connect("clicked", lambda w: sseti(dialog, updates))
     button_cancel.connect("clicked", lambda w: on_response(dialog, "cancel"))
-    rename = Gtk.Button(label=f"{langfile[18].strip()}")
+    rename = Gtk.Button(label=f"{langfile[22].strip()}")
     rename.set_hexpand(True)
-    delcat = Gtk.Button(label=f"{langfile[19].strip()}")
+    delcat = Gtk.Button(label=f"{langfile[23].strip()}")
     delcat.set_hexpand(True)
 
     delcat.connect("clicked", lambda w: deletecat("settings"))
@@ -287,9 +287,9 @@ def setti(event):
 
 
 def what(event):
-    dialog = Gtk.Dialog(f"{langfile[48].strip()}", None, 0,)
+    dialog = Gtk.Dialog(f"{langfile[52].strip()}", None, 0,)
 
-    l = Gtk.Label(label=f"{langfile[24].strip()}")
+    l = Gtk.Label(label=f"{langfile[28].strip()}")
     dialog.vbox.pack_start(l, False, True, 10)
 
     button_ok = Gtk.Button()
@@ -321,7 +321,7 @@ def infgame(button):
     ab = Gtk.AboutDialog()
     ab.set_program_name("catgameGTK")
     ab.set_version(versiona)
-    ab.set_comments(f"{langfile[27].strip()}\n{langfile[28].strip()}\n \n{langfile[29].strip()}")
+    ab.set_comments(f"{langfile[31].strip()}\n{langfile[32].strip()}\n \n{langfile[33].strip()}")
     ab.set_authors(["Igor360"])
     ab.set_website("https://github.com/lgor360/catgameGTK")
     ab.set_license(license)
@@ -339,14 +339,14 @@ def pur(event):
     name = cattxt[0].strip()
 
     path = os.path.join(datapath, f"colors/{cview}/{cicon}")
-    pushn(path, name, f"{langfile[32].strip()}")
+    pushn(path, name, f"{langfile[36].strip()}")
 
 
 def cond(event):
     if cattxt[1].strip() == "happy and not hungry":
-        condition = langfile[35].strip()
+        condition = langfile[39].strip()
     else:
-        condition = langfile[36].strip()
+        condition = langfile[40].strip()
     cicon = cattxt[3].strip()
     name = cattxt[0].strip()
 
@@ -360,7 +360,7 @@ def game(event):
     path = os.path.join(datapath, f"icon.png")
     games = int(games)
     games += 1
-    pushn(path, "catgameGTK", f"{games} {langfile[39].strip()}")
+    pushn(path, "catgameGTK", f"{games} {langfile[43].strip()}")
     
     cattxt[2] = f"{games}\n"
 
@@ -383,7 +383,7 @@ def eat():
     teat = int(time.time()) + 10800
     with open(os.path.join(cdata, "teat.txt"), "w") as f:
         f.write(f"{teat}")
-    pushn(path, name, f"{langfile[42].strip()}")
+    pushn(path, name, f"{langfile[46].strip()}")
 
 
 def main():
@@ -421,11 +421,11 @@ def main():
 
     main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
 
-    create_file_item = Gtk.Button(label=f"{langfile[46].strip()}")
+    create_file_item = Gtk.Button(label=f"{langfile[50].strip()}")
     create_file_item.connect("clicked", store)
     header.pack_start(create_file_item)
 
-    b_item = Gtk.Button(label=f"{langfile[47].strip()}")
+    b_item = Gtk.Button(label=f"{langfile[51].strip()}")
     b_item.connect("clicked", infgame)
     header.pack_start(b_item)
 
@@ -456,7 +456,7 @@ def main():
     main_box.pack_start(cat_grido, False, False, 0)
 
     global inf_item
-    inf_item = Gtk.Label(label=f"{langfile[52].strip()}: {name}")
+    inf_item = Gtk.Label(label=f"{langfile[56].strip()}: {name}")
     inf_item.set_hexpand(True)
     inf_item.set_margin_bottom(4)
     main_box.pack_start(inf_item, False, False, 4)
@@ -464,13 +464,13 @@ def main():
     butbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
     cat_grid = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
     
-    o_item = Gtk.Button(label=f"{langfile[48].strip()}")
+    o_item = Gtk.Button(label=f"{langfile[52].strip()}")
     o_item.connect("clicked", what)
     o_item.set_vexpand(True)
     o_item.set_hexpand(True)
     cat_grid.add(o_item)
 
-    t_item = Gtk.Button(label=f"{langfile[49].strip()}")
+    t_item = Gtk.Button(label=f"{langfile[53].strip()}")
     t_item.connect("clicked", game)
     t_item.set_hexpand(True)
     t_item.set_vexpand(True)
@@ -479,13 +479,13 @@ def main():
 
     cat_gridoco = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
     
-    th_item = Gtk.Button(label=f"{langfile[50].strip()}")
+    th_item = Gtk.Button(label=f"{langfile[54].strip()}")
     th_item.connect("clicked", pur)
     th_item.set_hexpand(True)
     th_item.set_vexpand(True)
     cat_gridoco.add(th_item)
 
-    th_item = Gtk.Button(label=f"{langfile[51].strip()}")
+    th_item = Gtk.Button(label=f"{langfile[55].strip()}")
     th_item.connect("clicked", cond)
     th_item.set_hexpand(True)
     th_item.set_vexpand(True)
@@ -510,6 +510,11 @@ def install():
 
     input_box = Gtk.Entry()
     dialog.vbox.pack_start(input_box, True, True, 0)
+    combo_box = Gtk.ComboBoxText()
+    combo_box.append("1", langfile[17].strip())
+    combo_box.append("2", langfile[18].strip())
+    combo_box.set_active(0)
+    dialog.vbox.pack_start(combo_box, True, True, 0)
 
 
     dialog.set_default_size(200, 70)
@@ -522,6 +527,10 @@ def install():
         user_input = input_box.get_text()
         print(f"cat name: {user_input}")
         randome = random.randint(1, 3)
+        typep = 'cat'
+        if combo_box.get_active_text() == langfile[18].strip():
+            randome = random.randint(1, 4)
+            typep = 'seal'
 
         if os.path.isdir(cdata):
             print("pikimiki")
@@ -530,10 +539,10 @@ def install():
 
         if user_input == "i dont care":
             with open(os.path.join(cdata, "cat.txt"), "w") as f:
-                f.write("jax\nsad and hungry\n0\nsad.png\n10-1-24\ncap")
+                f.write("jax\nsad and hungry\n0\nsad.png\njax\ncap")
         else:
             with open(os.path.join(cdata, "cat.txt"), "w") as f:
-                f.write(f"{user_input}\nsad and hungry\n0\nsad.png\n{randome}")
+                f.write(f"{user_input}\nsad and hungry\n0\nsad.png\n{typep}/{randome}")
             
         dialog.destroy()
         main()
