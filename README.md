@@ -5,7 +5,7 @@ yup. i just recode my "catgame" project to python :3
 ![shields.io badge](https://img.shields.io/badge/GTK_3.0-106dc4?labelColor=106dc4&style=plastic&logoColor=FFFFFF&logo=gtk)
 ![shields.io badge](https://img.shields.io/badge/cat_smile-:3-482c63?labelColor=6d1bbf&style=plastic)
 
-![preview](https://github.com/user-attachments/assets/e73510fc-1b4b-4906-b7fc-32f62fdc93ec)
+![preview](https://github.com/user-attachments/assets/0734e45c-ff9f-455f-9087-4dbdcc9a9e24)
 
 ## how to install
 ### from .deb file
@@ -68,8 +68,7 @@ i create some markdown table :3
 
 |version|innovation|status|
 |-|-|-|
-|1.9|big UI upgrade!|all done!|
-|2.0|seal mode🦭 and shadows|not started|
+|2.0|seal mode🦭 and shadows|all done!|
 |2.1|new hats!|not started|
 |2.2|custom hats!|not started|
 |2.3|mini games!|not started|
