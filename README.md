@@ -75,4 +75,4 @@ i create some markdown table :3
 |2.4|big update of cats feelings!|not started|
 |2.5|CUSTOM CATS!!!!|not started|
 |2.6|new settings (using Gtk.TreeView)|not started|
-|2.7|windows support|
+|2.7|windows support|not started|
