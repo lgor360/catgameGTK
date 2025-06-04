@@ -69,10 +69,11 @@ i create some markdown table :3
 |version|innovation|status|
 |-|-|-|
 |2.0|seal mode🦭 and shadows|all done!|
-|2.1|new hats!|not started|
-|2.2|custom hats!|not started|
-|2.3|mini games!|not started|
-|2.4|big update of cats feelings!|not started|
-|2.5|CUSTOM CATS!!!!|not started|
-|2.6|new settings (using Gtk.TreeView)|not started|
-|2.7|windows support|not started|
+|2.1|fixer (if i will upgrade paths to pets images again)|not started|
+|2.2|new hats!|not started|
+|2.3|custom hats!|not started|
+|2.4|mini games!|not started|
+|2.5|big update of cats feelings!|not started|
+|2.6|CUSTOM CATS!!!!|not started|
+|2.7|new settings (using Gtk.TreeView)|not started|
+|2.8|windows support|not started|
