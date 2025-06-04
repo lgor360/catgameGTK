@@ -34,9 +34,7 @@ pip install notify2
 4. all done!
 
 
-#### create .desktop file
-
-you also need to create a .desktop file for app! just create org.Igor360.catgameGTK.desktop and paste this intro file:
+you also need to create a .desktop file for app! just create org.Igor360.catgameGTK.desktop in ~/.local/share/applications (i dont remember the exact path) and paste this intro file:
 
 ```
 [Desktop Entry]
