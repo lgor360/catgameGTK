@@ -1,5 +1,6 @@
 # catgameGTK
-yup. i just recode my "catgame" project to python :3
+yup. i just recode my "catgame" project to python :3 \
+soon will be an update...
 
 ![shields.io badge](https://img.shields.io/badge/linux-e6b30e?labelColor=e6b30e&style=plastic&logoColor=FFFFFF&logo=linux)
 ![shields.io badge](https://img.shields.io/badge/GTK_3.0-106dc4?labelColor=106dc4&style=plastic&logoColor=FFFFFF&logo=gtk)
