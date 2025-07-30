@@ -538,9 +538,11 @@ def install():
             os.makedirs(os.path.join(shdata, "catdata"), exist_ok=True)
 
         if user_input == "i dont care":
+            # this part is needed to be destroyed 
             with open(os.path.join(cdata, "cat.txt"), "w") as f:
                 f.write("jax\nsad and hungry\n0\nsad.png\njax\ncap")
         else:
+            # this part is needed to be NOT destroyed 
             with open(os.path.join(cdata, "cat.txt"), "w") as f:
                 f.write(f"{user_input}\nsad and hungry\n0\nsad.png\n{typep}/{randome}")
             
